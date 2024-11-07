@@ -1,36 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+import Albums from "./screens/albums";
+import { NavigationContainer } from "@react-navigation/native";
+import Photo from "./screens/photo";
 
-const data = [
-  { name: "Alice", age: 25, address: "123 St" },
-  { name: "Bob", age: 30, address: "456 St" },
-  { name: "Charlie", age: 25, address: "789 St" },
-  { name: "David", age: 30, address: "101 St" }
-];
+const Stack = createStackNavigator();
 
 export default function App() {
-
+  console.log("App Running");
   return (
-    <View style={styles.container}>
-      <Text></Text>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="albums" component={Albums} />
+        <Stack.Screen name="photo" component={Photo} />
+      </Stack.Navigator>
       <StatusBar style="auto" />
-    </View>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  header:{
-    flex:1,
-    backgroundColor:'pink'
-  },
   container: {
-    flex: 4,
-    backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
-  footer:{
-    flex:1,
-    backgroundColor:'grey'
-  }
 });
